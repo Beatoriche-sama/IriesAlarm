@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/overlay_linear_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/overlay_textview">
+
+        <Button
+            android:id="@+id/snooze_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/snooze">
+
+        </Button>
+
+        <Button
+            android:id="@+id/dismiss_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20sp"
+            android:text="@string/dismiss">
+
+        </Button>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/overlay_textview"
+        android:layout_marginBottom="20dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+    </TextView>
+</RelativeLayout>

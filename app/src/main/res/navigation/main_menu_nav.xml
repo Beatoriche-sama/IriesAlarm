@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MenuFragment">
+
+    <fragment
+        android:id="@+id/MenuFragment"
+        android:name="com.iries.youtubealarm.UI.mainUI.MenuFragment"
+        android:label="@string/menu_fragment_label"
+        tools:layout="@layout/menu_fragment">
+
+        <action
+            android:id="@+id/action_MenuFragment_to_AlarmFragment"
+            app:destination="@id/AlarmFragment" />
+
+        <action
+            android:id="@+id/action_MenuFragment_to_YTSearchFragment"
+            app:destination="@id/YTSearchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AlarmFragment"
+        android:name="com.iries.youtubealarm.UI.alarmUI.AlarmFragment"
+        android:label="@string/alarm_fragment_label"
+        tools:layout="@layout/alarm_fragment">
+
+        <action
+            android:id="@+id/action_AlarmFragment_to_MenuFragment"
+            app:destination="@id/MenuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/YTSearchFragment"
+        android:name="com.iries.youtubealarm.UI.youtubeUI.YTSearchFragment"
+        android:label="@string/yt_search_fragment_label"
+        tools:layout="@layout/yt_search_fragment">
+
+        <action
+            android:id="@+id/action_YTSearchFragment_to_MenuFragment"
+            app:destination="@id/MenuFragment" />
+    </fragment>
+
+</navigation>

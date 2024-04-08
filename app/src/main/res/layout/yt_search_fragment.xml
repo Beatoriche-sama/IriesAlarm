@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dip">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/list_description"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/linearButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/findAllSelectedChannels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_horizontal"
+            android:text="@string/show_all_selected_channels" />
+
+        <Button
+            android:id="@+id/my_subs_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:gravity="end|center_horizontal"
+            android:text="@string/my_subs_buttons" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading_data_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linearButtons"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="true"
+        android:visibility="invisible" />
+
+
+    <ListView
+        android:id="@+id/yt_channels_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="40sp"
+        android:layout_below="@id/loading_data_progress" />
+
+</RelativeLayout>

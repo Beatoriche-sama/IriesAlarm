@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="menu_fragment_label">Menu</string>
+    <string name="alarm_fragment_label">Alarm</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="description">
+        Alarm is ringing.
+    </string>
+    <string name="chooseChannel">Choose YouTube channel</string>
+    <string name="media_player_desc">Play and stop audio here</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="textview">TextView</string>
+    <string name="list_description"> </string>
+    <string name="show_all_selected_channels">Selected channels</string>
+    <string name="search_title">Search title</string>
+    <string name="search_hint"> </string>
+    <string name="title_activity_search_results">Search YouTube channels here</string>
+    <string name="show_recent_channels_search">Last channels search</string>
+    <string name="yt_search_fragment_label">yt search</string>
+    <string name="submit">Submit</string>
+    <string name="set_up_alarm">Set up alarm</string>
+    <string name="edit_alarm">Edit alarm</string>
+    <string name="create_alarm_button">New alarm</string>
+    <string name="notification_description">YouTube Alarm notification settings.</string>
+    <string name="snooze">Snooze</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="ringtone_settings">Ringtone settings</string>
+    <string name="duration">Preffered duration:</string>
+    <string name="order">Preffered order:</string>
+    <string name="search_my_subs">My subscriptions</string>
+    <string name="search_global">Search Youtube</string>
+    <string name="my_subs_buttons">My subsriptions</string>
+    <string name="no_channels_warning">Please, choose YouTube channel first.</string>
+</resources>
