@@ -36,6 +36,12 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deleteAlarm" />
+
 
     <TextView
         android:id="@+id/alarm_active_days_view"

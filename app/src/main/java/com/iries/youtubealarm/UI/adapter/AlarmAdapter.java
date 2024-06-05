@@ -70,16 +70,23 @@ public abstract class AlarmAdapter extends ArrayAdapter<AlarmInfo> {
                 .collect(Collectors.joining(", "));
         holder.activeDaysView.setText(activeDaysText);
 
-        Button button = convertView.findViewById(R.id.edit_time_button);
-        button.setOnClickListener(e -> onEdit(alarm));
+        Button editButton = convertView.findViewById(R.id.edit_time_button);
+        editButton.setOnClickListener(e -> onEdit(alarm));
+
         ToggleButton toggleButton = convertView.findViewById(R.id.toggleButton);
         toggleButton.setOnClickListener(e
                 -> onToggle(toggleButton.isChecked(), alarm));
         toggleButton.setChecked(alarm.isActive());
+
+        Button deleteButton = convertView.findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(e-> onDelete(alarm));
+
         return convertView;
     }
 
     public abstract void onEdit(AlarmInfo alarmInfo);
 
     public abstract void onToggle(boolean isOn, AlarmInfo alarmInfo);
+
+    public abstract void onDelete(AlarmInfo alarm);
 }

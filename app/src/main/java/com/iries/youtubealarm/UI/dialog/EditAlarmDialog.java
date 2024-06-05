@@ -35,7 +35,7 @@ public abstract class EditAlarmDialog extends AlertDialog {
         Calendar calendar = Calendar.getInstance();
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-        LayoutInflater inflater = getSystemService(getContext(),
+        LayoutInflater inflater = getSystemService(context,
                 LayoutInflater.class);
         View dialogView = inflater.inflate(R.layout.alarm_edit_dialog, null);
         dialogBuilder.setView(dialogView);
@@ -64,6 +64,7 @@ public abstract class EditAlarmDialog extends AlertDialog {
             timePicker.setMinute(calendar
                     .get(Calendar.MINUTE));
         });
+
         return alertDialog;
     }
 

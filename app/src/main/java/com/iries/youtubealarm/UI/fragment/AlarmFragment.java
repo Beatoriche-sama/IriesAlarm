@@ -69,7 +69,12 @@ public class AlarmFragment extends Fragment {
                 .observe(getViewLifecycleOwner(),
                         alarms -> alarmsListAdapter.setList(alarms));
 
-        binding.createAlarmButton.setOnClickListener(e -> createAlarm());
+        binding.createAlarmButton.setOnClickListener(e -> {
+            AlarmInfo alarm = new AlarmInfo(0, 0);
+            sharedModel.insert(alarm);
+            new EditAlarmDialogImpl(alarm).setOnCancelListener
+                    (ee -> sharedModel.remove(alarm));
+        });
 
         binding.ringtoneSettingsButton.setOnClickListener(e
                 -> new RingtoneSettingsDialog(requireActivity(), settings));
@@ -82,23 +87,10 @@ public class AlarmFragment extends Fragment {
         binding = null;
     }
 
-    private void createAlarm() {
-        AlarmInfo alarm = new AlarmInfo(0, 0);
-        sharedModel.insert(alarm);
-        new EditAlarmDialogImpl(alarm).setOnCancelListener
-                (ee -> sharedModel.remove(alarm));
-    }
-
-    private void removeAlarm(AlarmInfo alarm) {
-        alarm.getDaysId().values().forEach(intentId
-                -> AlarmUtil.cancelIntent(intentId, context));
-        sharedModel.remove(alarm);
-    }
-
     private class EditAlarmDialogImpl extends EditAlarmDialog {
 
         public EditAlarmDialogImpl(AlarmInfo alarm) {
-            super(alarm, context);
+            super(alarm, AlarmFragment.this.getContext());
         }
 
         @Override
@@ -131,6 +123,13 @@ public class AlarmFragment extends Fragment {
                 alarmInfo.setActive(false);
                 Toast.makeText(context, "ALARM OFF", Toast.LENGTH_SHORT).show();
             }
+        }
+
+        @Override
+        public void onDelete(AlarmInfo alarm) {
+            alarm.getDaysId().values().forEach(intentId
+                    -> AlarmUtil.cancelIntent(intentId, context));
+            sharedModel.remove(alarm);
         }
     }
 

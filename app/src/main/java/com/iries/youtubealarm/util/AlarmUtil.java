@@ -18,16 +18,22 @@ public class AlarmUtil {
                                          AlarmInfo alarm, DAY_OF_WEEK day) {
         int hour = alarm.getHour();
         int minute = alarm.getMinute();
+        int chosenDay = day.getId();
+
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.DAY_OF_WEEK, chosenDay);
 
-        calendar.set(Calendar.DAY_OF_WEEK, day.getId());
-        if(calendar.before(Calendar.getInstance())) {
-            calendar.add(Calendar.DATE, 1);
+        Calendar currentCalendar = Calendar.getInstance();
+        if (calendar.before(currentCalendar)) {
+            int currentDay = currentCalendar.get(Calendar.DAY_OF_WEEK);
+            int diff = currentDay == chosenDay?
+                    7 : Math.abs(currentDay - chosenDay);
+            calendar.add(Calendar.DATE, diff);
         }
 
-        String fullAlarmIdString = String.valueOf(alarm.getId()) + (day.getId());
+        String fullAlarmIdString = String.valueOf(alarm.getId()) + (chosenDay);
         int fullAlarmId = Integer.parseInt(fullAlarmIdString);
         alarm.getDaysId().put(day, fullAlarmId);
 

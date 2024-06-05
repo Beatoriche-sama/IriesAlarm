@@ -23,7 +23,7 @@
     <string name="yt_search_fragment_label">yt search</string>
     <string name="submit">Submit</string>
     <string name="set_up_alarm">Set up alarm</string>
-    <string name="edit_alarm">Edit alarm</string>
+    <string name="edit_alarm">Edit</string>
     <string name="create_alarm_button">New alarm</string>
     <string name="notification_description">YouTube Alarm notification settings.</string>
     <string name="snooze">Snooze</string>
@@ -35,4 +35,5 @@
     <string name="search_global">Search Youtube</string>
     <string name="my_subs_buttons">My subsriptions</string>
     <string name="no_channels_warning">Please, choose YouTube channel first.</string>
+    <string name="deleteAlarm">Delete</string>
 </resources>
