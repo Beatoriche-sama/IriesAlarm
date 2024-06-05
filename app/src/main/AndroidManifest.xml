@@ -30,7 +30,7 @@
         tools:targetApi="tiramisu">
 
         <activity
-            android:name=".UI.mainUI.MainActivity"
+            android:name=".UI.activity.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Test">
             <intent-filter>
@@ -40,7 +40,7 @@
         </activity>
 
         <receiver
-            android:name=".alarm.AlarmReceiver"
+            android:name=".receiver.AlarmReceiver"
             android:enabled="true"
             android:process=":remote"
             android:exported="true" >
@@ -50,7 +50,7 @@
         </receiver>
 
         <service
-            android:name=".alarm.service.RingtonePlayingService">
+            android:name=".service.RingtonePlayingService">
         </service>
 
         <!--<activity
@@ -68,12 +68,12 @@
         </activity>-->
 
         <activity
-            android:name=".UI.alarmUI.TriggeredAlarmActivity"
+            android:name=".UI.activity.TriggeredAlarmActivity"
             android:showOnLockScreen="true"
             android:launchMode="singleTask"
             android:taskAffinity=""
             android:excludeFromRecents="true"
-            android:parentActivityName=".UI.mainUI.MainActivity">
+            android:parentActivityName=".UI.activity.MainActivity">
         </activity>
 
     </application>

@@ -5,11 +5,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
-import com.iries.youtubealarm.UI.alarmUI.AlarmFragment;
-import com.iries.youtubealarm.alarm.AlarmInfo;
-import com.iries.youtubealarm.alarm.AlarmReceiver;
-import com.iries.youtubealarm.alarm.DAY_OF_WEEK;
-import com.iries.youtubealarm.alarm.service.RingtonePlayingService;
+import com.iries.youtubealarm.UI.fragment.AlarmFragment;
+import com.iries.youtubealarm.data.entity.alarm.AlarmInfo;
+import com.iries.youtubealarm.receiver.AlarmReceiver;
+import com.iries.youtubealarm.data.entity.alarm.DAY_OF_WEEK;
+import com.iries.youtubealarm.service.RingtonePlayingService;
 
 import java.util.Calendar;
 
@@ -23,9 +23,14 @@ public class AlarmUtil {
         calendar.set(Calendar.MINUTE, minute);
 
         calendar.set(Calendar.DAY_OF_WEEK, day.getId());
+        if(calendar.before(Calendar.getInstance())) {
+            calendar.add(Calendar.DATE, 1);
+        }
+
         String fullAlarmIdString = String.valueOf(alarm.getId()) + (day.getId());
         int fullAlarmId = Integer.parseInt(fullAlarmIdString);
         alarm.getDaysId().put(day, fullAlarmId);
+
         setAlarm(context, calendar.getTimeInMillis(), fullAlarmId, true);
     }
 
