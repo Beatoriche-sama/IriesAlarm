@@ -19,7 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.iries.youtubealarm.R;
 import com.iries.youtubealarm.UI.adapter.AlarmAdapter;
 import com.iries.youtubealarm.UI.dialog.EditAlarmDialog;
-import com.iries.youtubealarm.UI.dialog.RingtoneSettingsDialog;
+import com.iries.youtubealarm.UI.dialog.SettingsDialog;
 import com.iries.youtubealarm.data.entity.alarm.AlarmInfo;
 import com.iries.youtubealarm.service.RingtonePlayingService;
 import com.iries.youtubealarm.databinding.AlarmFragmentBinding;
@@ -77,7 +77,7 @@ public class AlarmFragment extends Fragment {
         });
 
         binding.ringtoneSettingsButton.setOnClickListener(e
-                -> new RingtoneSettingsDialog(requireActivity(), settings));
+                -> new SettingsDialog(requireActivity(), settings));
     }
 
 

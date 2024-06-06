@@ -13,12 +13,13 @@ import com.iries.youtubealarm.R;
 import com.iries.youtubealarm.data.Settings;
 import com.iries.youtubealarm.data.entity.youtube.filters.DURATION;
 import com.iries.youtubealarm.data.entity.youtube.filters.ORDER;
+import com.iries.youtubealarm.util.SettingsManager;
 
-public class RingtoneSettingsDialog extends AlertDialog {
+public class SettingsDialog extends AlertDialog {
     private final Settings settings;
     private final Context context;
 
-    public RingtoneSettingsDialog(Context context, Settings settings) {
+    public SettingsDialog(Context context, Settings settings) {
         super(context);
         this.context = context;
         this.settings = settings;
@@ -47,7 +48,7 @@ public class RingtoneSettingsDialog extends AlertDialog {
         dialogBuilder.setPositiveButton(android.R.string.ok, (dialog, which) -> {
             settings.setOrder((ORDER) orderSpinner.getSelectedItem());
             settings.setDuration((DURATION)durationSpinner.getSelectedItem());
-
+            SettingsManager.save(settings);
         });
         return dialogBuilder.create();
     }
