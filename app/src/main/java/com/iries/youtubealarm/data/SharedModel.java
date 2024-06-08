@@ -17,9 +17,6 @@ import java.util.List;
 public class SharedModel extends AndroidViewModel {
     private final AlarmsRepo alarmsRepo;
     private final ChannelsRepo channelsRepo;
-    //RepositoryProvider repositoryProvider;
-    /*private final List<YTChannel> ytChannels;
-    private final List<AlarmInfo> alarms;*/
     private final LiveData<List<AlarmInfo>> allAlarms;
     private final LiveData<List<YTChannel>> allChannels;
     private final Settings settings;
@@ -32,36 +29,14 @@ public class SharedModel extends AndroidViewModel {
         allAlarms = alarmsRepo.getAllAlarms();
         allChannels = channelsRepo.getAllChannels();
         settings = SettingsManager.load();
-
-        /*dbManager = DBManager.getInstance();
-        dbManager.open(application);
-
-        ytChannels = dbManager.fetchAllChannels();
-        alarms = dbManager.fetchAllAlarms();
-        settings = SettingsManager.load();*/
-
-        /*repositoryProvider = RepositoryProvider.getInstance();
-        repositoryProvider.load();
-
-        preferredYTChannels = (ArrayList<YTChannel>) repositoryProvider
-                .getChannelsRepo().getObject();
-        alarms = (LinkedList<AlarmInfo>) repositoryProvider
-                .getAlarmsRepo().getObject();
-        settings = (Settings) repositoryProvider.getSettingsRepo().getObject();*/
     }
 
     public void insert(YTChannel ytChannel) {
         channelsRepo.insert(ytChannel);
-        /*ytChannels.add(ytChannel);
-        long id = dbManager.insert(ytChannel, DBHelper.CHANNELS_TABLE);*/
     }
 
     public void insert(AlarmInfo alarmInfo) {
         alarmsRepo.insert(alarmInfo);
-        /*alarms.add(alarmInfo);
-        long id = dbManager.insert(alarmInfo, DBHelper.ALARMS_TABLE);
-        alarmInfo.setId(id);
-        return id;*/
     }
 
     public void update(AlarmInfo alarm) {
@@ -70,19 +45,10 @@ public class SharedModel extends AndroidViewModel {
 
     public void remove(YTChannel ytChannel) {
         channelsRepo.delete(ytChannel);
-        //dbManager.delete();
     }
 
     public void remove(AlarmInfo alarmInfo) {
         alarmsRepo.delete(alarmInfo);
-        //dbManager.delete(alarmInfo.getId(), DBHelper.ALARMS_TABLE);
-    }
-
-    public void save() {
-        //repositoryProvider.save();
-       /* dbManager.updateTable(DBHelper.ALARMS_TABLE, alarms);
-        dbManager.updateTable(DBHelper.CHANNELS_TABLE, ytChannels);
-        SettingsManager.save(settings);*/
     }
 
     public LiveData<List<YTChannel>> getAllChannels() {

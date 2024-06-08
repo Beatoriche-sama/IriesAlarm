@@ -27,4 +27,10 @@ public interface ChannelsDao {
 
     @Query("SELECT * FROM CHANNELS")
     LiveData<List<YTChannel>> getAllChannels();
+
+    @Query("SELECT COUNT(id) FROM CHANNELS")
+    int getChannelsCount();
+
+    @Query("SELECT channelId FROM CHANNELS WHERE id = :dbId")
+    String getChannelId(long dbId);
 }

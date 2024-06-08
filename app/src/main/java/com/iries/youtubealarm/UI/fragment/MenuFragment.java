@@ -22,6 +22,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.iries.youtubealarm.R;
 import com.iries.youtubealarm.data.SharedModel;
+import com.iries.youtubealarm.data.database.ChannelsRepo;
 import com.iries.youtubealarm.databinding.MenuFragmentBinding;
 import com.iries.youtubealarm.util.youtube.YoutubeAuth;
 
@@ -61,14 +62,19 @@ public class MenuFragment extends Fragment {
         alarmButton.setOnClickListener(v
                 -> navController.navigate(R.id.action_MenuFragment_to_AlarmFragment));
 
-        new ViewModelProvider(requireActivity())
+       /* new ViewModelProvider(requireActivity())
                 .get(SharedModel.class).getAllChannels()
                 .observe(getViewLifecycleOwner(), e -> {
                     if (!e.isEmpty()) return;
                     alarmButton.setEnabled(false);
                     showWarningDialog();
-                });
+                });*/
 
+        int size = new ChannelsRepo(context).getChannelsCount();
+        if (size == 0) {
+            alarmButton.setEnabled(false);
+            showWarningDialog();
+        }
 
         Button ytButton = binding.ytSearchButton;
         ytButton.setOnClickListener(e -> {

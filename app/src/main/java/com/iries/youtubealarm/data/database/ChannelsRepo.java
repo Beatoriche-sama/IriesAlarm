@@ -37,4 +37,12 @@ public class ChannelsRepo {
     public LiveData<List<YTChannel>> getAllChannels(){
         return allChannels;
     }
+
+    public int getChannelsCount(){
+        return channelsDao.getChannelsCount();
+    }
+
+    public String getChannelId(long dbId){
+        return channelsDao.getChannelId(dbId);
+    }
 }
