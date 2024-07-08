@@ -15,7 +15,7 @@ public class Video {
 
     public Video(SearchResult result) {
         SearchResultSnippet snippet = result.getSnippet();
-        this.id = result.get("id").toString();
+        this.id = result.getId().getVideoId();
         this.title = snippet.getTitle();
     }
 

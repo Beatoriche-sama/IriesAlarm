@@ -46,6 +46,7 @@ public class AlarmUtil {
         int flags = isRepeating ?
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
                 : PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE;
+
         Intent nextAlarmIntent = new Intent(context, AlarmReceiver.class);
         nextAlarmIntent.putExtra(AlarmFragment.TIME_EXTRA, timeInMillis);
         nextAlarmIntent.putExtra(AlarmFragment.ALARM_ID, fullAlarmId);

@@ -42,7 +42,7 @@ public class ChannelsRepo {
         return channelsDao.getChannelsCount();
     }
 
-    public String getChannelId(long dbId){
-        return channelsDao.getChannelId(dbId);
+    public String getRandomChannelId(/*long dbId*/){
+        return channelsDao.getChannelId(/*dbId*/);
     }
 }

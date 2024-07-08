@@ -10,6 +10,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
@@ -24,14 +26,22 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.api.services.youtube.YouTube;
 import com.iries.youtubealarm.R;
 import com.iries.youtubealarm.data.entity.alarm.AlarmInfo;
 import com.iries.youtubealarm.data.SharedModel;
+import com.iries.youtubealarm.data.entity.youtube.Video;
+import com.iries.youtubealarm.data.entity.youtube.filters.DURATION;
+import com.iries.youtubealarm.data.entity.youtube.filters.ORDER;
 import com.iries.youtubealarm.databinding.ActivityMainBinding;
+import com.iries.youtubealarm.util.youtube.YoutubeAuth;
+import com.iries.youtubealarm.util.youtube.YoutubeSearch;
 import com.yausername.youtubedl_android.YoutubeDL;
 import com.yausername.youtubedl_android.YoutubeDLException;
 
 import java.util.Calendar;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;

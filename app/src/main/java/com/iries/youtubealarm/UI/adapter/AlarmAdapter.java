@@ -75,7 +75,7 @@ public abstract class AlarmAdapter extends ArrayAdapter<AlarmInfo> {
 
         ToggleButton toggleButton = convertView.findViewById(R.id.toggleButton);
         toggleButton.setOnClickListener(e
-                -> onToggle(toggleButton.isChecked(), alarm));
+                -> onToggle(alarm.isActive(), alarm));
         toggleButton.setChecked(alarm.isActive());
 
         Button deleteButton = convertView.findViewById(R.id.deleteButton);

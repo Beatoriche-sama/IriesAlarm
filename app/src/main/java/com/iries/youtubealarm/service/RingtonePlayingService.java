@@ -22,7 +22,6 @@ import com.yausername.youtubedl_android.YoutubeDLException;
 import com.yausername.youtubedl_android.YoutubeDLRequest;
 import com.yausername.youtubedl_android.mapper.VideoInfo;
 
-import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -34,23 +33,12 @@ public class RingtonePlayingService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        /*LiveData<List<YTChannel>> channels
-                = new ChannelsRepo(this).getAllChannels();
-        channels.observeForever(new Observer<List<YTChannel>>() {
-            @Override
-            public void onChanged(List<YTChannel> ytChannels) {
-                Random random = new Random();
-                int index = random.nextInt(ytChannels.size());
-                chosenChannel = ytChannels.get(index);
-                channels.removeObserver(this);
-            }});*/
         ChannelsRepo channelsRepo = new ChannelsRepo(this);
-        Random random = new Random();
-        int channelsSize = channelsRepo.getChannelsCount();
-        int index = random.nextInt(channelsSize);
-        chosenChannelId = channelsRepo.getChannelId(index);
+        chosenChannelId = channelsRepo.getRandomChannelId();
+        System.out.println("Chosen channel ID is: " + chosenChannelId);
 
         settings = SettingsManager.load();
+        System.out.println("Duration is: " + settings.getDuration());
 
         startService();
         return START_STICKY;
@@ -129,6 +117,7 @@ public class RingtonePlayingService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        System.out.println("Stop ringtone");
         shutUpRingtone();
     }
 

@@ -31,6 +31,7 @@ public interface ChannelsDao {
     @Query("SELECT COUNT(id) FROM CHANNELS")
     int getChannelsCount();
 
-    @Query("SELECT channelId FROM CHANNELS WHERE id = :dbId")
-    String getChannelId(long dbId);
+    //@Query("SELECT channelId FROM CHANNELS WHERE id = :dbId")
+    @Query("SELECT channelId FROM CHANNELS ORDER BY RANDOM() LIMIT 1")
+    String getChannelId(/*long dbId*/);
 }
