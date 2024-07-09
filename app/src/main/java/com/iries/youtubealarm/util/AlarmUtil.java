@@ -28,8 +28,7 @@ public class AlarmUtil {
         Calendar currentCalendar = Calendar.getInstance();
         if (calendar.before(currentCalendar)) {
             int currentDay = currentCalendar.get(Calendar.DAY_OF_WEEK);
-            int diff = currentDay == chosenDay?
-                    7 : Math.abs(currentDay - chosenDay);
+            int diff =  7 - Math.abs(currentDay - chosenDay);
             calendar.add(Calendar.DATE, diff);
         }
 

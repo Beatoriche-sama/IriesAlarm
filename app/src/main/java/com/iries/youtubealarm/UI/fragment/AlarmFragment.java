@@ -42,7 +42,7 @@ public class AlarmFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.context = requireActivity().getApplicationContext();
+        this.context = getContext();
         this.sharedModel = new ViewModelProvider(
                 requireActivity()).get(SharedModel.class);
         this.settings = sharedModel.getSettings();
@@ -72,8 +72,7 @@ public class AlarmFragment extends Fragment {
         binding.createAlarmButton.setOnClickListener(e -> {
             AlarmInfo alarm = new AlarmInfo(0,0);
             alarm.setActive(true);
-            new EditAlarmDialog(alarm,
-                    AlarmFragment.this.getContext()){
+            new EditAlarmDialog(alarm,context){
 
                 @Override
                 public void updateAlarmsList(AlarmInfo alarm) {
@@ -93,18 +92,6 @@ public class AlarmFragment extends Fragment {
         binding = null;
     }
 
-    /*private class EditAlarmDialogImpl extends EditAlarmDialog {
-
-        public EditAlarmDialogImpl(AlarmInfo alarm) {
-            super(alarm, AlarmFragment.this.getContext());
-        }
-
-        @Override
-        public void updateAlarmsList(AlarmInfo alarm) {
-            sharedModel.update(alarm);
-        }
-    }*/
-
     private class AlarmAdapterImpl extends AlarmAdapter {
 
         public AlarmAdapterImpl(@NonNull Context context, int resource) {
@@ -114,7 +101,7 @@ public class AlarmFragment extends Fragment {
         @Override
         public void onEdit(AlarmInfo alarmInfo) {
             //new EditAlarmDialogImpl(alarmInfo);
-            new EditAlarmDialog(alarmInfo, AlarmFragment.this.getContext()){
+            new EditAlarmDialog(alarmInfo, context){
                 @Override
                 public void updateAlarmsList(AlarmInfo alarm) {
                     sharedModel.update(alarm);
@@ -127,10 +114,7 @@ public class AlarmFragment extends Fragment {
             if (!isOn) {
                 Toast.makeText(context, "ALARM ON", Toast.LENGTH_SHORT).show();
                 alarmInfo.getDaysId().keySet()
-                        .forEach(day -> {
-                            setRepeatingAlarm(context, alarmInfo, day);
-                            System.out.println("Set alarm for: " + day.getName());
-                        });
+                        .forEach(day -> setRepeatingAlarm(context, alarmInfo, day));
                 alarmInfo.setActive(true);
             } else {
                 Intent stopIntent = new Intent(context, RingtonePlayingService.class);
